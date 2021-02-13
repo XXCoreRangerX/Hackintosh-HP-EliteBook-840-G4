@@ -65,6 +65,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - External display on VGA
 - Touchpad disable (both button and LED not working)
 - WiFi Button (LED always orange, button does nothing)
+- F4 and F10 functions (need to disable FN+F3 and map FN+F10 to Play/Pause)
 - NFC module (not tested)
 - LTE module (not tested)
 - SC reader
