@@ -63,6 +63,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Trackpoint
 - Boot chime
 - External display on VGA
+- Touchpad disable (both button and LED not working)
 - WiFi Button (LED always orange, button does nothing)
 - NFC module (not tested)
 - LTE module (not tested)
