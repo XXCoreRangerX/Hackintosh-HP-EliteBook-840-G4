@@ -68,6 +68,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - LTE module (not tested)
 - SC reader
 - Dock station (not tested, might work)
+- Proper CFG Unlock (there isn't an option in the BIOS, and I didn't find any way to disable it)
 
 
 ##### Thanks to:
