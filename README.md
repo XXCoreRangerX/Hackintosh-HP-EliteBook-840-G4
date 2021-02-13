@@ -59,18 +59,20 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Enable Power Control
 
 #### Not working:
-- FingerPrint Scanner
+- Proper CFG Unlock (there isn't an option in the BIOS, and I didn't find any way to disable it)
+- FingerPrint Scanner (currently there's no way to emulate any fingerprint scanner (different than original Touch ID) under macOS
 - Trackpoint
 - Boot chime
 - External display on VGA
 - Touchpad disable (both button and LED not working)
 - WiFi Button (LED always orange, button does nothing)
 - F4 and F10 functions (need to disable FN+F3 and map FN+F10 to Play/Pause)
-- NFC module (not tested)
-- LTE module (not tested)
+
+#### Not tested:
+- NFC module 
+- LTE module
 - SC reader
-- Dock station (not tested, might work)
-- Proper CFG Unlock (there isn't an option in the BIOS, and I didn't find any way to disable it)
+- Dock station
 
 
 ##### Thanks to:
