@@ -62,14 +62,12 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - FingerPrint Scanner
 - Trackpoint
 - Boot chime
-- Drag-lock on touchscreen
 - External display on VGA
 - WiFi Button (LED always orange, button does nothing)
 - NFC module (not tested)
 - LTE module (not tested)
 - SC reader
 - Dock station (not tested, might work)
-- Touchscreen works completely like a touchpad, the cursor doesn't follow the finger anymore, will need to fix that
 
 
 ##### Thanks to:
@@ -78,6 +76,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - [corpnewt](https://github.com/corpnewt) for many useful tools
 - [headkaze](https://github.com/headkaze) for Hackintool
 - [alexandred](https://github.com/alexandred) for VoodooI2C
+- [ben9923](https://github.com/ben9923) for helping me fix all touchscreen related issues
 - [1Revenger1](https://github.com/1Revenger1) for VoodooRMI
 - [cholonam](https://github.com/cholonam) and [sinetek](https://github.com/sinetek) for Sinetek-rtsx
 - [RehabMan](https://github.com/RehabMan) for many laptop hotpatches
