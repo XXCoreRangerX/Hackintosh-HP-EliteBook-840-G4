@@ -69,7 +69,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - LTE module (not tested)
 - SC reader
 - Dock station (not tested, might work)
-- Touchscreen works completly like a touchpad, the cursor doesn't follow the finger anymore, will need to fix that
+- Touchscreen works completely like a touchpad, the cursor doesn't follow the finger anymore, will need to fix that
 
 
 ##### Thanks to:
