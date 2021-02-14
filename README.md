@@ -60,6 +60,78 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Disable Wake on USB
 - Enable Power Control
 
+### ACPI
+Here I explain what each SSDT in the EFI does.
+
+| SSDT | What is it used for | Is it required |
+| ------------- | ------------- | ------------- |
+| SSDT-PLUG | Fixes CPU power management | Yes |
+| SSDT-BATT | Fixes battery indicator and power management | Yes |
+| SSDT-USBX | Fixes Embedded Controller | Yes |
+| SSDT-GPRW | Fixes wake on USB or power state change | Yes |
+| SSDT-ZPTS | Fixes auto reboot when shutting down | Yes |
+| SSDT-HP-FixLidSleep | Fixes keyboard spam on lid close | Yes |
+| SSDT-PWRB | Fixes power button | Yes |
+| SSDT-HPET | Fixes IRQ conflicts | ? |
+| SSDT-PNLF | Enables brightness controll | Yes |
+| SSDT-XOSI | Fixes touchscreen and touchpad | Yes |
+| SSDT-SBUS-MCHC | Improves SMBus support | Yes |
+| SSDT-PMCR | Some LPCB device fix | ? |
+| SSDT-PPMC | Some real macOS device fix | ? |
+| SSDT-SET-STAS | Fixes support for latest BIOS versions | Disable if on BIOS version lower than 1.32 |
+
+### ACPI renames and patches
+Here I explain what does each ACPI patch do.
+
+| Patch | What is it used for | Is it required |
+| ------------- | ------------- | ------------- |
+| RTC Fix to stop Post Error | Fixes RTC wake | Yes |
+| Rename EC0 to EC | Fixes Embedded Controller issue | Yes |
+| Rename EC method BTIF to XTIF | Fixes Embedded Controller issue | Yes |
+| Rename EC method BTST to XTST | Fixes Embedded Controller issue | Yes |
+| Rename EC method ITLB to XTLB | Fixes Embedded Controller issue | Yes |
+| Rename EC method GBTI to XBTI | Fixes Embedded Controller issue | Yes |
+| Rename EC method GBTC to GBTX | Fixes Embedded Controller issue | Yes |
+| Rename EC method SBTC to SBTX | Fixes Embedded Controller issue | Yes |
+| Rename EC method GACW to XACW | Fixes Embedded Controller issue | Yes |
+| Rename EC method GBAW to XBAW | Fixes Embedded Controller issue | Yes |
+| Rename SB package NBTI to NBTX | Fixes Embedded Controller issue | Yes |
+| Rename method GPRW to XPRW | Fixes wake on USB or power state change | Yes |
+| \_CRS to XCRS | Fixes touchscreen and touchpad | Yes |
+| Rename PWRB method \_STA to XSTA | Fixes power button | Yes |
+| \_PTS to ZPTS | Fixes auto reboot when shutting down | Yes |
+| HPET \_CRS to XCRS Rename | Fixes IRQ conflicts | ? |
+| RTC IRQ 8 Patch | Fixes RTC IRQ conflict | ? |
+| TIMR IRQ 0 Patch | Fixes TIMR IRQ conflict | ? |
+| Rename \_OSI to XOSI | Fixes touchscreen and touchpad | Yes |
+| ACPI Patch for latest BIOS | Fixes support for latest BIOS versions | Disable if on BIOS version lower than 1.32 |
+
+### Kexts
+Here I explain what each injected kext is used for.
+| Kext | What is it used for | Is it required |
+| ------------- | ------------- | ------------- |
+| AppleALC | Fixes audio | Yes |
+| CPUFriend | Fixes CPU power management | Yes |
+| CPUFriendDataProvider | Provides information about the CPU for CPUFriend | Yes |
+| CtlnaAHCIPort | Fixes some AHCI controllers that were dropped in Big Sur | ? |
+| IntelMausi | Fixes ethernet | Yes |
+| Lilu | A kext to patch many processes, required for AppleALC, WhateverGreen, VirtualSMC and many other kexts. Without Lilu, they will not work | Yes |
+| NVMeFix | Fixes power management and initialization on non-Apple NVMe | Yes |
+| Sinetek-rtsx | Fixes SD card reader | Yes |
+| VirtualSMC | Emulates the SMC chip found on real macs, without this macOS will not boot | Yes |
+| SMCBatteryManager | Used for measuring battery readouts on laptops | Yes |
+| SMCProcessor | Used for monitoring CPU temperature | Yes |
+| SMCSuperIO | Used for monitoring fan speed | ? |
+| USBPorts | USB ports map | Yes |
+| VoodooI2C | Used for fixing I2C devices | Disable if no touchscreen |
+| VoodooI2CHID | Satellite for VoodooI2C, fixes I2C touchscreen | Disable if no touchscreen |
+| VoodooPS2Controller | Fixes PS2 keyboard | Yes |
+| VoodooRMI | Fixes the touchpad | Yes |
+| VoodooSMBus | Required for VoodooRMI to work with SMBus devices | Yes |
+| WhateverGreen | Used for graphics patching DRM, boardID, framebuffer fixes, etc. | Yes |
+
+If you use the builtin Intel Wi-Fi, inject [Itlwm](https://github.com/OpenIntelWireless/itlwm) and [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) kexts.
+
 ### CPU Power Management
 The settings I used for CPUFriendFriend, for managing CPU power:
 | Feature | Setting |
