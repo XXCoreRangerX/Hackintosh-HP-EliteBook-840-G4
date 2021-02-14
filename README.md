@@ -1,15 +1,17 @@
 # Hackintosh-HP-EliteBook-840-G4
 OpenCore EFI for the HP EliteBook 840 G4
 
-### Overview:
+# Overview:
 This repository was built to make a fully working OpenCore EFI for this laptop. It's based on my work and help from other people.
 
-#### Laptop Specification:
+![Screenshot](img/main.png)
+
+## Laptop Specification:
 - BIOS: For the highest stability use 1.29 (latest version works too, but need to remake SSDT-BATT for better battery management)
 - CPU: Intel® Core i7-7600U Quad Core (for other CPUs, you need to make CPUFriendDataProvider.kext [yourself](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend))
 - GPU: Intel® HD Graphics 620
 - RAM: 8GB DDR4 2133MHz
-- WiFi/BT: Apple AirPort BCM94360CS2 (if you're using the builtin Intel WiFi - inject [Itlwm](https://github.com/OpenIntelWireless/itlwm) and [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) kexts)
+- Wi-Fi/BT: Apple AirPort BCM94360CS2 (if you're using the builtin Intel WiFi - inject [Itlwm](https://github.com/OpenIntelWireless/itlwm) and [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) kexts)
 - Audio: Conexant CX8200
 - ETH: Intel® Ethernet Connection I219-V
 - Display: 14" Full HD Touchscreen (for the non-touch model, remove everything regarding VoodooI2C, and use VoodooInput from VoodooRMI)
@@ -17,7 +19,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Keyboard: PS2 HP Keyboard
 - SD Card Reader: Realtek
 
-#### BIOS Settings:
+## BIOS Settings:
 - Disable TPM Security
 - Disable Physical Presence Interface
 - Disable Intel SGX
@@ -58,7 +60,42 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Disable Wake on USB
 - Enable Power Control
 
-#### Not working:
+### CPU Power Management
+The settings I used for CPUFriendFriend, for managing CPU power:
+| Feature | Setting |
+| ------------- | ------------- |
+| LFM (Low Frequency Mode) | 800Mhz (recommended value from Intel ARK website) |
+| EPP (Energy Performance Preference) | 0x3F (focused on performance, but with decent battery saving)|
+| Performance Bias | 0x05 (focused on fair performance and high stability)|
+| Additional Energy Savings Options | Yes |
+
+### Configure sleep
+![Screenshot](img/sleep.png)
+
+These are the settings that work for me. Setting hibernatemode to 0 doesn't let me put the laptop into sleep mode, so I kept the default value.
+
+To apply patches for sleep - type the following commands in the terminal:
+```
+sudo pmset autopoweroff 1
+sudo pmset powernap 0
+sudo pmset proximitywake 0
+sudo pmset sleep 1
+sudo pmset standby 1
+```
+
+### HiDPI Scaling (Retina Scaling)
+![Screenshot](img/hidpi.png)
+
+Retina displays on real Apple devices have a high pixel density because of HiDPI scalling. One logical pixel is four physical pixels on Retina displays. This can be emulated on Hackintoshes too. I used a script called [one-key-hidpi](https://github.com/xzhih/one-key-hidpi) which works pretty good on this device. Since Full HD is quite hard to work on while using a 14" display, this is a really useful fix. However, using it will make the Apple boot logo large at 2nd boot stage, and I haven't found a way to fix that yet.
+
+These are the options I used in the script:
+| Feature | Setting |
+| ------------- | ------------- |
+| HiDPI | Enable HiDPI |
+| Icon | MacBook Pro |
+| Resolution | 1920x1080 |
+
+## Not working:
 - DRM (isn't supported on iGPU only systems)
 - Proper CFG Unlock (there isn't an option in the BIOS, and I didn't find any way to disable it)
 - FingerPrint Scanner (currently there's no way to emulate any fingerprint scanner (different than original Touch ID) under macOS
@@ -69,7 +106,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - WiFi Button (LED always orange, button does nothing)
 - F4 and F10 functions (need to disable FN+F3 and map FN+F10 to Play/Pause)
 
-#### Not tested:
+## Not tested:
 - NFC module 
 - LTE module
 - SC reader
