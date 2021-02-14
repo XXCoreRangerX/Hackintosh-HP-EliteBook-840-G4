@@ -73,6 +73,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - LTE module
 - SC reader
 - Dock station
+- USB-C
 
 
 ##### Thanks to:
