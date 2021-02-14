@@ -6,13 +6,13 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 
 #### Laptop Specification:
 - BIOS: For the highest stability use 1.29 (latest version works too, but need to remake SSDT-BATT for better battery management)
-- CPU: Intel® Core i7-7600U Quad Core
+- CPU: Intel® Core i7-7600U Quad Core (for other CPUs, you need to make CPUFriendDataProvider.kext [yourself](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend))
 - GPU: Intel® HD Graphics 620
 - RAM: 8GB DDR4 2133MHz
-- WiFi/BT: Apple AirPort BCM94360CS2
+- WiFi/BT: Apple AirPort BCM94360CS2 (if you're using the builtin Intel WiFi - inject [Itlwm](https://github.com/OpenIntelWireless/itlwm) and [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) kexts)
 - Audio: Conexant CX8200
 - ETH: Intel® Ethernet Connection I219-V
-- Display: 14" Full HD Touchscreen
+- Display: 14" Full HD Touchscreen (for the non-touch model, remove everything regarding VoodooI2C, and use VoodooInput from VoodooRMI)
 - Touchpad: Synaptics SMBus
 - Keyboard: PS2 HP Keyboard
 - SD Card Reader: Realtek
@@ -64,7 +64,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Trackpoint
 - Boot chime
 - External display on VGA
-- Touchpad disable (both button and LED not working)
+- Dot to disable touchpad (in the upper left corner of the touchpad)
 - WiFi Button (LED always orange, button does nothing)
 - F4 and F10 functions (need to disable FN+F3 and map FN+F10 to Play/Pause)
 
