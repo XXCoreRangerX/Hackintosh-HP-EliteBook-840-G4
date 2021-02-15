@@ -60,6 +60,8 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Disable Wake on USB
 - Enable Power Control
 
+# Tweaks:
+
 ### ACPI
 Here I explain what each SSDT in the EFI does.
 
