@@ -193,6 +193,7 @@ These are the options I used in the script:
 - [dortania](https://github.com/dortania) for an awesome OpenCore guide
 - [corpnewt](https://github.com/corpnewt) for many useful tools
 - [headkaze](https://github.com/headkaze) for Hackintool
+- [xzhih](https://github.com/xzhih) for one-key-hidpi
 - [alexandred](https://github.com/alexandred) for VoodooI2C
 - [ben9923](https://github.com/ben9923) for helping me fix all touchscreen related issues
 - [1Revenger1](https://github.com/1Revenger1) for VoodooRMI
