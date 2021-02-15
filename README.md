@@ -13,10 +13,11 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - RAM: 8GB DDR4 2133MHz
 - Wi-Fi/BT: Apple AirPort BCM94360CS2 (if you're using the builtin Intel WiFi - inject [Itlwm](https://github.com/OpenIntelWireless/itlwm) and [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) kexts)
 - Audio: Conexant CX8200
-- ETH: Intel® Ethernet Connection I219-V
+- ETH: Intel® Ethernet Connection I219-LM (I219-V also supported with IntelMausi)
 - Display: 14" Full HD Touchscreen (for the non-touch model, remove everything regarding VoodooI2C, and use VoodooInput from VoodooRMI)
 - Touchpad: Synaptics SMBus
 - Keyboard: PS2 HP Keyboard
+- Webcam: HP HD Camera (the camera may work out of the box, or not work at all - there is no way to fix it)
 - SD Card Reader: Realtek
 
 ## BIOS Settings:
@@ -75,7 +76,7 @@ Here I explain what each SSDT in the EFI does.
 | SSDT-HPET | Fixes IRQ conflicts | ? |
 | SSDT-PNLF | Enables brightness controll | Yes |
 | SSDT-XOSI | Fixes touchscreen and touchpad | Yes |
-| SSDT-SBUS-MCHC | Improves SMBus support | Yes |
+| SSDT-SBUS-MCHC | Improves SMBus support | ? |
 | SSDT-PMCR | Some LPCB device fix | ? |
 | SSDT-PPMC | Some real macOS device fix | ? |
 | SSDT-SET-STAS | Fixes support for latest BIOS versions | Disable if on BIOS version lower than 1.32 |
@@ -112,7 +113,7 @@ Here I explain what each injected kext is used for.
 | ------------- | ------------- | ------------- |
 | AppleALC | Fixes audio | Yes |
 | CPUFriend | Fixes CPU power management | Yes |
-| CPUFriendDataProvider | Provides information about the CPU for CPUFriend | Yes |
+| CPUFriendDataProvider | Provides information about the CPU for CPUFriend | You need to [make a custom CPUFriendDataProvider](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend)) if you have a different CPU |
 | CtlnaAHCIPort | Fixes some AHCI controllers that were dropped in Big Sur | ? |
 | IntelMausi | Fixes ethernet | Yes |
 | Lilu | A kext to patch many processes, required for AppleALC, WhateverGreen, VirtualSMC and many other kexts. Without Lilu, they will not work | Yes |
@@ -167,6 +168,8 @@ These are the options I used in the script:
 | Icon | MacBook Pro |
 | Resolution | 1920x1080 |
 
+**Note:** HiDPI only works on Full HD or higher
+
 ## Not working:
 - DRM (isn't supported on iGPU only systems)
 - Proper CFG Unlock (there isn't an option in the BIOS, and I didn't find any way to disable it)
@@ -176,7 +179,7 @@ These are the options I used in the script:
 - External display on VGA
 - Dot to disable touchpad (in the upper left corner of the touchpad)
 - WiFi Button (LED always orange, button does nothing)
-- F4 and F10 functions (need to disable FN+F3 and map FN+F10 to Play/Pause)
+- F3 and F10 functions (need to disable FN+F3 and map FN+F10 to Play/Pause)
 
 ## Not tested:
 - NFC module 
@@ -184,6 +187,7 @@ These are the options I used in the script:
 - SC reader
 - Dock station
 - USB-C
+- HP Sure View
 
 
 ##### Thanks to:
