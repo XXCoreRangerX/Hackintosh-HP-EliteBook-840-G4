@@ -8,7 +8,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 
 ## Laptop Specification:
 - BIOS: For the highest stability use 1.29 (latest version works too, but need to remake SSDT-BATT for better battery management)
-- CPU: Intel® Core i7-7600U Quad Core (for other CPUs, you need to make CPUFriendDataProvider.kext [yourself](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend))
+- CPU: Intel® Core i7-7600U (for other CPUs, you need to make CPUFriendDataProvider.kext [yourself](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend))
 - GPU: Intel® HD Graphics 620
 - RAM: 8GB DDR4 2133MHz
 - Wi-Fi/BT: Apple AirPort BCM94360CS2 (if you're using the builtin Intel WiFi - inject [Itlwm](https://github.com/OpenIntelWireless/itlwm) and [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) kexts)
