@@ -175,7 +175,7 @@ These are the options I used in the script:
 - DRM (isn't supported on iGPU only systems)
 - Proper CFG Unlock (there isn't an option in the BIOS, and I didn't find any way to disable it)
 - FingerPrint Scanner (currently there's no way to emulate any fingerprint scanner (different than original Touch ID) under macOS
-- Trackpoint
+- Trackpoint (works with VoodooPS2Mouse, but using that kext breaks the touchpad - still working on it)
 - Boot chime
 - External display on VGA
 - Dot to disable touchpad (in the upper left corner of the touchpad)
