@@ -190,6 +190,7 @@ These are the options I used in the script:
 - USB-C
 - HP Sure View
 
+# Acknowledgements
 
 ##### Thanks to:
 - [acidanthera](https://github.com/acidanthera) for OpenCore and almost all the kexts and drivers
