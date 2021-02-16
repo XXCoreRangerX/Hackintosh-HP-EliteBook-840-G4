@@ -124,7 +124,7 @@ Here I explain what each injected kext is used for.
 | SMCBatteryManager | Used for measuring battery readouts on laptops | Yes |
 | SMCProcessor | Used for monitoring CPU temperature | Yes |
 | SMCSuperIO | Used for monitoring fan speed | ? |
-| USBPorts | USB ports map | Yes |
+| USBPorts | USB ports map | You need to [make a custom USB map](https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html), you can also use Hackintool for that |
 | VoodooI2C | Used for fixing I2C devices | Disable if no touchscreen |
 | VoodooI2CHID | Satellite for VoodooI2C, fixes I2C touchscreen | Disable if no touchscreen |
 | VoodooPS2Controller | Fixes PS2 keyboard | Yes |
