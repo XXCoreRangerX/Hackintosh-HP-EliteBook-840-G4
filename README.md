@@ -174,16 +174,16 @@ These are the options I used in the script:
 ## Not working:
 - DRM (isn't supported on iGPU only systems)
 - Proper CFG Unlock (there isn't an option in the BIOS, and I didn't find any way to disable it)
-- FingerPrint Scanner (currently there's no way to emulate any fingerprint scanner (different than original Touch ID) under macOS
+- FingerPrint Scanner (currently there's no way to emulate an OEM fingerprint scanner under macOS)
 - Trackpoint (works with VoodooPS2Mouse, but using that kext breaks the touchpad - still working on it)
 - Boot chime
 - External display on VGA
-- Dot to disable touchpad (in the upper left corner of the touchpad)
-- WiFi Button (LED always orange, button does nothing)
+- Dot to disable touchpad (in the upper left corner of the touchpad, might be possible with VoodooPS2)
+- WiFi Button (LED always orange, button does nothing, might be possible with a custom SSDT)
 - F3 and F10 functions (need to disable FN+F3 and map FN+F10 to Play/Pause)
 
 ## Not tested:
-- NFC module 
+- NFC module
 - LTE module
 - SC reader
 - Dock station
