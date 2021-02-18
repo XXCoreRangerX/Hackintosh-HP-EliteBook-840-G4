@@ -123,7 +123,6 @@ Here I explain what each injected kext is used for.
 | VirtualSMC | Emulates the SMC chip found on real macs, without this macOS will not boot | Yes |
 | SMCBatteryManager | Used for measuring battery readouts on laptops | Yes |
 | SMCProcessor | Used for monitoring CPU temperature | Yes |
-| SMCSuperIO | Used for monitoring fan speed | ? |
 | USBPorts | USB ports map | You need to [make a custom USB map](https://dortania.github.io/OpenCore-Post-Install/usb/), you can also use Hackintool for that |
 | VoodooI2C | Used for fixing I2C devices | Disable if no touchscreen |
 | VoodooI2CHID | Satellite for VoodooI2C, fixes I2C touchscreen | Disable if no touchscreen |
