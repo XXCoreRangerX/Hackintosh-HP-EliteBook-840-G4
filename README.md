@@ -180,7 +180,6 @@ These are the options I used in the script:
 - External display on VGA
 - Dot to disable touchpad (in the upper left corner of the touchpad, might be possible with VoodooPS2)
 - WiFi Button (LED always orange, button does nothing, might be possible with a custom SSDT)
-- F3 and F10 functions (need to disable FN+F3 and map FN+F10 to Play/Pause)
 
 ## Not tested:
 - NFC module
