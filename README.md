@@ -13,7 +13,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Wi-Fi/BT: Apple AirPort BCM94360CS2 (if you're using the builtin Intel WiFi - inject [Itlwm](https://github.com/OpenIntelWireless/itlwm) and [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) kexts)
 - Audio: Conexant CX8200
 - ETH: Intel® Ethernet Connection I219-LM (I219-V also supported with IntelMausi)
-- Display: 14" Full HD Touchscreen (for the non-touch model, remove everything regarding VoodooI2C, and use VoodooInput from VoodooRMI)
+- Display: 14" Full HD Touchscreen (for the non-touch model, remove everything regarding VoodooI2C)
 - Touchpad: Synaptics SMBus
 - Keyboard: PS2 HP Keyboard
 - Webcam: HP HD Camera (the camera may work out of the box, or not work at all - there is no way to fix it)
@@ -74,9 +74,9 @@ Here I explain what each SSDT in the EFI does.
 | SSDT-ZPTS | Fixes auto reboot when shutting down | Yes |
 | SSDT-HP-FixLidSleep | Fixes keyboard spam on lid close | Yes |
 | SSDT-PWRB | Fixes power button | Yes |
-| SSDT-HPET | Fixes IRQ conflicts | ? |
 | SSDT-PNLF | Enables brightness controll | Yes |
 | SSDT-XOSI | Fixes touchscreen and touchpad | Yes |
+| SSDT-HPET | Fixes IRQ conflicts | ? |
 | SSDT-SBUS-MCHC | Improves SMBus support | ? |
 | SSDT-PMCR | Some LPCB device fix | ? |
 | SSDT-PPMC | Some real macOS device fix | ? |
@@ -102,10 +102,10 @@ Here I explain what does each ACPI patch do.
 | \_CRS to XCRS | Fixes touchscreen and touchpad | Yes |
 | Rename PWRB method \_STA to XSTA | Fixes power button | Yes |
 | \_PTS to ZPTS | Fixes auto reboot when shutting down | Yes |
+| Rename \_OSI to XOSI | Fixes touchscreen and touchpad | Yes |
 | HPET \_CRS to XCRS Rename | Fixes IRQ conflicts | ? |
 | RTC IRQ 8 Patch | Fixes RTC IRQ conflict | ? |
 | TIMR IRQ 0 Patch | Fixes TIMR IRQ conflict | ? |
-| Rename \_OSI to XOSI | Fixes touchscreen and touchpad | Yes |
 | ACPI Patch for latest BIOS | Fixes support for latest BIOS versions | Disable if on BIOS version lower than 1.32 |
 
 ### Kexts
@@ -124,6 +124,7 @@ Here I explain what each injected kext is used for.
 | SMCBatteryManager | Used for measuring battery readouts on laptops | Yes |
 | SMCProcessor | Used for monitoring CPU temperature | Yes |
 | USBPorts | USB ports map | You need to [make a custom USB map](https://dortania.github.io/OpenCore-Post-Install/usb/), you can also use Hackintool for that |
+| VoodooInput | Required for almost all "Voodoo" kexts | Yes |
 | VoodooI2C | Used for fixing I2C devices | Disable if no touchscreen |
 | VoodooI2CHID | Satellite for VoodooI2C, fixes I2C touchscreen | Disable if no touchscreen |
 | VoodooPS2Controller | Fixes PS2 keyboard | Yes |
