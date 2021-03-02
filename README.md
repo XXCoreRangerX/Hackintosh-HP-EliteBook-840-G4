@@ -34,6 +34,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Enable Turbo Boost
 - Enable Hyperthreading
 - Enable Multi-Processor
+- Set VRAM to 64MB or higher
 - Enable VT-x
 - Disable VT-d
 - Disable Fast Charge
