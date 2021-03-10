@@ -61,8 +61,10 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Disable Wake on USB
 - Enable Power Control
 
-# Tweaks:
+# Installation
+To use this EFI, follow [Dortania's OpenCore guide](https://dortania.github.io/OpenCore-Install-Guide/). You will need to create a bootable USB with macOS image on it, then copy the entire EFI folder on it. Remember to first set BIOS settings, use kexts that match your hardware configuration, make changes to the config.plist according to your laptop's specification and **make sure you have backups**.
 
+# Tweaks:
 ### ACPI
 Here I explain what each SSDT in the EFI does.
 
@@ -136,6 +138,8 @@ Here I explain what each injected kext is used for.
 If you use the builtin Intel Wi-Fi, inject [Itlwm](https://github.com/OpenIntelWireless/itlwm) and [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) kexts.
 
 ### CPU Power Management
+CPU power management is done by `CPUFriend.kext` while `CPUFriendDataProvider.kext` defines how it should be done. `CPUFriendDataProvider.kext` is generated for a specific CPU and power setting. The one supplied in this repository was made for the i7-7600U. You might have a different CPU, and if you do - you need to make `CPUFriendDataProvider.kext` yourself using [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend) tool. Read [this guide](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend) for more information.
+
 The settings I used for CPUFriendFriend, for managing CPU power:
 | Feature | Setting |
 | ------------- | ------------- |
@@ -143,6 +147,19 @@ The settings I used for CPUFriendFriend, for managing CPU power:
 | EPP (Energy Performance Preference) | 0x3F (focused on performance, but with decent battery saving)|
 | Performance Bias | 0x05 (focused on fair performance and high stability)|
 | Additional Energy Savings Options | Yes |
+
+### Fixing iServices
+One of the most important things that many people don't know how to properly set up is iServices.
+Actually, it's pretty easy if you do it **before** the installation.
+Just follow the [original guide](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) but generate the serial and inject it **before** you start installing macOS. This will save you a lot of time and will make iServices work right after the installation.
+
+### Secure Boot and ApECID
+If you're using [Itlwm](https://github.com/OpenIntelWireless/itlwm), you need to set SecureBootModel to Default. If you don't use that kext, you can have it set to the closest one that matches your SMBIOS for higher security. I used `j680` from **MacBookPro15,1** SMBIOS. 
+
+You can also [generate your own ApECID](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#apecid) (stands for Apple Enclave Identifier) which is known as the "highest level of security". Used along with a custom SecureBootModel will make your device even more secure.
+
+### FileVault
+I won't cover this topic in the README, because I don't use FileVault, but it is possible to have it working on this laptop and most other machines. If you want to use it - follow the [guide](https://dortania.github.io/OpenCore-Post-Install/universal/security/filevault.html).
 
 ### Configure sleep
 ![Screenshot](img/sleep.png)
@@ -199,7 +216,7 @@ Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the
 - Boot chime
 - External display on VGA
 - Dot to disable touchpad (in the upper left corner of the touchpad, might be possible with VoodooPS2)
-- WiFi Button (LED always orange, button does nothing, might be possible with a custom SSDT)
+- Wi-Fi LED
 - Booting Linux from OpenCore
 
 ## Not tested:
