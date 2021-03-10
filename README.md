@@ -126,8 +126,8 @@ Here I explain what each injected kext is used for.
 | SMCProcessor | Used for monitoring CPU temperature | Yes |
 | USBPorts | USB ports map | You need to [make a custom USB map](https://dortania.github.io/OpenCore-Post-Install/usb/), you can also use Hackintool for that |
 | VoodooInput | Required for almost all "Voodoo" kexts | Yes |
-| VoodooI2C | Used for fixing I2C devices | Disable if no touchscreen |
-| VoodooI2CHID | Satellite for VoodooI2C, fixes I2C touchscreen | Disable if no touchscreen |
+| VoodooI2C (works since 2.6.5 release) | Used for fixing I2C devices | Disable if no touchscreen |
+| VoodooI2CHID (works since 2.6.5 release) | Satellite for VoodooI2C, fixes I2C touchscreen | Disable if no touchscreen |
 | VoodooPS2Controller | Fixes PS2 keyboard | Yes |
 | VoodooRMI | Fixes the touchpad | Yes |
 | VoodooSMBus | Required for VoodooRMI to work with SMBus devices | Yes |
@@ -171,6 +171,25 @@ These are the options I used in the script:
 | Resolution | 1920x1080 |
 
 **Note:** HiDPI only works on Full HD or higher
+
+### Wi-Fi button fix
+I found a way to fix the Wi-Fi button, that was previously not doing anything. Turns out it's a regular key, that is blocked in default `VoodooPS2Keyboard` configuration. I mapped it to F16, because it was the safest key with no general use under macOS (you can assign it to any other key in `VoodooPS2Keyboard’s` `info.plist` file, if needed).
+
+I'll provide the instructions needed for the fix.
+
+First, you'll need to determine what is your Wi-Fi device's name. To do so, type in ```networksetup -listnetworkserviceorder | sed -n '/Wi-Fi/s|.*Device: \(.*\)).*|\1|p'``` in the terminal. Generally it's named ```en3```. Rememeber the name, as you will need it in further steps.
+
+1. Open Automator app and create a new Service
+2. Set "Service receives selected: to "no input" in "any application"
+3. Add an action named "Run Shell Script". It's in the Utilities section of the Actions Library
+4. Insert ```networksetup -getairportpower en1 | grep "On" && networksetup -setairportpower en1 off || networksetup -setairportpower en1 on``` into the text box and test run it using the Run button (top right)
+5. Save it and give it a name you will remember
+6. Go to System Preferences -> Keyboard -> Shortcuts
+7. Go to the Services section, and scroll down to General - you should find your service there. Once you select it - click "add shortcut" and press the Wi-Fi button.
+
+Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the LED will require additional fixes - making a custom SSDT would propably make it work.
+
+**Note:** If you have multiple user accounts on your laptop - you will have to repeat all of these steps for each account.
 
 ## Not working:
 - DRM (isn't supported on iGPU only systems)
