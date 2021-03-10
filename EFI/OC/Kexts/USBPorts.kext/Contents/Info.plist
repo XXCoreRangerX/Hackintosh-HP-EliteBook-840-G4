@@ -77,7 +77,7 @@
 					<key>HS05</key>
 					<dict>
 						<key>UsbConnector</key>
-						<integer>10</integer>
+						<integer>9</integer>
 						<key>name</key>
 						<string>HS05</string>
 						<key>port</key>
@@ -127,17 +127,6 @@
 						<key>port</key>
 						<data>
 						DgAAAA==
-						</data>
-					</dict>
-					<key>SS03</key>
-					<dict>
-						<key>UsbConnector</key>
-						<integer>10</integer>
-						<key>name</key>
-						<string>SS03</string>
-						<key>port</key>
-						<data>
-						DwAAAA==
 						</data>
 					</dict>
 				</dict>
