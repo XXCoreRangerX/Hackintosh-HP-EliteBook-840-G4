@@ -17,7 +17,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Touchpad: Synaptics SMBus
 - Keyboard: PS2 HP Keyboard
 - Webcam: HP HD Camera (the camera may work out of the box, or not work at all - there is no way to fix it)
-- SD Card Reader: Realtek
+- SD Card Reader: Realtek RTS522A
 
 ## BIOS Settings:
 - Disable TPM Security
