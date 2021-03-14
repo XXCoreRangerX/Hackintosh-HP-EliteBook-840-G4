@@ -80,7 +80,7 @@ Here I explain what each SSDT in the EFI does.
 | SSDT-PNLF | Enables brightness controll | Yes |
 | SSDT-XOSI | Fixes touchscreen and touchpad | Yes |
 | SSDT-HPET | Fixes IRQ conflicts | ? |
-| SSDT-SBUS-MCHC | Improves SMBus support | ? |
+| SSDT-SBUS-MCHC | Improves SMBus support and injects MCHC properties | Broken when VoodooSMBus injected, but does fix MCHC - recommended to keep it enabled |
 | SSDT-PMCR | Some LPCB device fix | ? |
 | SSDT-PPMC | Some real macOS device fix | ? |
 | SSDT-SET-STAS | Fixes support for latest BIOS versions | Disable if on BIOS version lower than 1.32 |
