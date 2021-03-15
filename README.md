@@ -1,6 +1,11 @@
 # Hackintosh-HP-EliteBook-840-G4
 OpenCore EFI for the HP EliteBook 840 G4
 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4)](https://github.com/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4/releases)
+[![GitHub all releases](https://img.shields.io/github/downloads/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4/total)](https://github.com/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4/releases)
+[![GitHub issues](https://img.shields.io/github/issues/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4)](https://github.com/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4)](https://github.com/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4/pulls)
+
 # Overview:
 This repository was built to make a fully working OpenCore EFI for this laptop. It's based on my work and help from other people.
 ![Screenshot](img/main.png)
