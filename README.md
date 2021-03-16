@@ -229,7 +229,6 @@ Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the
 - LTE module
 - SC reader
 - Dock station
-- HP Sure View
 
 # Acknowledgements
 
