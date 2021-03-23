@@ -8,7 +8,7 @@ OpenCore EFI for the HP EliteBook 840 G4
 
 # Overview:
 This repository was built to make a fully working OpenCore EFI for this laptop. It's based on my work and help from other people.
-![Screenshot](img/main.png)
+![HP EliteBook 840 G4](img/laptop.jpg)
 
 ## Laptop Specification:
 - BIOS: For the highest stability use 1.29 (latest version works too, but need to remake SSDT-BATT for better battery management)
