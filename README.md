@@ -117,7 +117,6 @@ Here I explain what does each ACPI patch do.
 | HPET \_CRS to XCRS Rename | Fixes IRQ conflicts | ? |
 | RTC IRQ 8 Patch | Fixes RTC IRQ conflict | ? |
 | TIMR IRQ 0 Patch | Fixes TIMR IRQ conflict | ? |
-| ACPI Patch for latest BIOS | Fixes support for latest BIOS versions | Disable if on BIOS version lower than 1.32 |
 
 ### Kexts
 Here I explain what each injected kext is used for.
