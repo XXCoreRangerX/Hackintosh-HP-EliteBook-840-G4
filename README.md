@@ -7,6 +7,9 @@ OpenCore EFI for the HP EliteBook 840 G4
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4)](https://github.com/XXCoreRangerX/Hackintosh-HP-EliteBook-840-G4/pulls)
 
 # Overview:
+
+> :warning: **Important**: Sleep settings have been improved. Please change them according to the new configuration.
+
 This repository was built to make a fully working OpenCore EFI for this laptop. It's based on my work and help from other people.
 ![HP EliteBook 840 G4](img/laptop.jpg)
 
@@ -169,16 +172,21 @@ I won't cover this topic in the README, because I don't use FileVault, but it is
 ### Configure sleep
 ![Screenshot](img/sleep.png)
 
-These are the settings that work for me. Setting hibernatemode to 0 doesn't let me put the laptop into sleep mode, so I kept the default value.
+These are the settings that work for me. Hibernation isn't supported on Hackintosh, therefore should be disabled.
 
 To apply patches for sleep - type the following commands in the terminal:
 ```
-sudo pmset autopoweroff 1
-sudo pmset powernap 0
+sudo pmset hibernatemode 0
+sudo rm -f /var/vm/sleepimage
+sudo mkdir /var/vm/sleepimage
+sudo pmset autopoweroff 0
+sudo pmset -a standby 0
+sudo pmset autorestart 0
 sudo pmset proximitywake 0
-sudo pmset sleep 1
-sudo pmset standby 1
+sudo pmset disksleep 0
+sudo pmset tcpkeepalive 0 (optional)
 ```
+Make sure to disable wake on LAN in power settings.
 
 ### HiDPI Scaling (Retina Scaling)
 ![Screenshot](img/hidpi.png)
