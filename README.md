@@ -99,7 +99,6 @@ Here I explain what does each ACPI patch do.
 | Patch | What is it used for | Is it required |
 | ------------- | ------------- | ------------- |
 | RTC Fix to stop Post Error | Fixes RTC wake | Yes |
-| Rename EC0 to EC | Fixes Embedded Controller issue | Yes |
 | Rename EC method BTIF to XTIF | Fixes Embedded Controller issue | Yes |
 | Rename EC method BTST to XTST | Fixes Embedded Controller issue | Yes |
 | Rename EC method ITLB to XTLB | Fixes Embedded Controller issue | Yes |
