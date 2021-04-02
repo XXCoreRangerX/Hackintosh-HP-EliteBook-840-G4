@@ -227,12 +227,12 @@ Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the
 - Boot chime
 - External display on VGA
 - Dot to disable touchpad (in the upper left corner of the touchpad, might be possible with VoodooPS2)
-- Wi-Fi LED
+- Wi-Fi LED (always orange, but if there's an LTE module connected it's always white)
+- LTE module (being detected as Ethernet and not working)
 - Booting Linux from OpenCore
 
 ## Not tested:
 - NFC module
-- LTE module
 - SC reader
 - Dock station
 
