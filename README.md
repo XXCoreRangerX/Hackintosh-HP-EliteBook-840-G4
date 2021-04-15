@@ -8,7 +8,7 @@ OpenCore EFI for the HP EliteBook 840 G4
 
 # Overview:
 
-> :warning: **Important**: Sleep settings have been improved. Please change them according to the new configuration.
+> :warning: **Important**: Sleep settings have been improved. Please change them according to the new configuration. Make sure to also **Disable USB Legacy Port Charging** in the BIOS, because it causes weird behaviour of the left USB port.
 
 This repository was built to make a fully working OpenCore EFI for this laptop. It's based on my work and help from other people.
 ![HP EliteBook 840 G4](img/laptop.jpg)
@@ -67,6 +67,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Disable Wake when Lid is Opened
 - Disable Wake when AC is Detected
 - Disable Wake on USB
+- Disable USB Legacy Port Charging
 - Enable Power Control
 
 # Installation
