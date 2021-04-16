@@ -32,7 +32,6 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Disable Physical Presence Interface
 - Disable Intel SGX
 - Enable System Management Command
-- Disable Fast Boot
 - Enable USB Storage Boot
 - Disable Network PXE Boot
 - Disable Power On when AC Detected
@@ -44,7 +43,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Enable Multi-Processor
 - Set VRAM to 64MB or higher
 - Enable VT-x
-- Disable VT-d
+- Disable VT-d (can be used with DisableIOMapper enabled)
 - Disable Fast Charge
 - Enable Turbo Boost on DC
 - Disable HP Application Driver
@@ -57,10 +56,11 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Enable Fan Always On while on AC Power
 - Enable Fan Quietness Mode
 - Enable Boost Converter
-- Enable Touch Device
+- Enable Touch Device (if you have a touchscreen)
 - Enable Integrated Camera
 - Enable Media Card Reader
-- Disable Smart Card
+- Enable Smart Card (if you want to use the smart card reader)
+- Disable Smart Card Power Savings (weird behaviour on macOS)
 - Enable Runtime Power Management
 - Disable Extended Idle Power States
 - Disable Deep Sleep
