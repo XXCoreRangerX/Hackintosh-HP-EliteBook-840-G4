@@ -125,7 +125,7 @@ Here I explain what each injected kext is used for.
 | AppleALC | Fixes audio | Yes |
 | CPUFriend | Fixes CPU power management | Yes |
 | CPUFriendDataProvider | Provides information about the CPU for CPUFriend | You need to [make a custom CPUFriendDataProvider](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend)) if you have a different CPU |
-| CtlnaAHCIPort | Fixes some AHCI controllers that were dropped in Big Sur | ? |
+| CtlnaAHCIPort | Fixes some AHCI controllers that were dropped in Big Sur | Yes |
 | IntelMausi | Fixes ethernet | Yes |
 | Lilu | A kext to patch many processes, required for AppleALC, WhateverGreen, VirtualSMC and many other kexts. Without Lilu, they will not work | Yes |
 | NVMeFix | Fixes power management and initialization on non-Apple NVMe | Yes |
@@ -133,7 +133,7 @@ Here I explain what each injected kext is used for.
 | VirtualSMC | Emulates the SMC chip found on real macs, without this macOS will not boot | Yes |
 | SMCBatteryManager | Used for measuring battery readouts on laptops | Yes |
 | SMCProcessor | Used for monitoring CPU temperature | Yes |
-| USBPorts | USB ports map | You need to [make a custom USB map](https://dortania.github.io/OpenCore-Post-Install/usb/), you can also use Hackintool for that |
+| USBPorts | USB ports map | Yes |
 | VoodooInput | Required for almost all "Voodoo" kexts | Yes |
 | VoodooI2C (works since 2.6.5 release) | Used for fixing I2C devices | Disable if no touchscreen |
 | VoodooI2CHID (works since 2.6.5 release) | Satellite for VoodooI2C, fixes I2C touchscreen | Disable if no touchscreen |
@@ -234,7 +234,6 @@ Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the
 
 ## Not tested:
 - NFC module
-- SC reader
 - Dock station
 
 # Acknowledgements
