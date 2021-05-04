@@ -185,7 +185,7 @@ sudo pmset proximitywake 0
 sudo pmset disksleep 0
 sudo pmset tcpkeepalive 0 (optional)
 ```
-Make sure to disable wake on LAN in power settings.
+Make sure to disable wake on LAN in power settings. I also recommend to disable Power Nap, which causes random wake up calls on my laptop.
 
 ### HiDPI Scaling (Retina Scaling)
 ![Screenshot](img/hidpi.png)
