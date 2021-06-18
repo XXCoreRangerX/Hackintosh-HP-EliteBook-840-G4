@@ -8,13 +8,13 @@ OpenCore EFI for the HP EliteBook 840 G4
 
 # Overview:
 
-> :warning: **Important**: Sleep settings have been improved. Please change them according to the new configuration. Make sure to also **Disable USB Legacy Port Charging** in the BIOS, because it causes weird behaviour of the left USB port.
+> :warning: **Important**: Sleep settings have been improved. Please change them according to the new configuration. Make sure to also **Disable USB Legacy Port Charging** in the BIOS, because it causes weird behavior of the left USB port.
 
 This repository was built to make a fully working OpenCore EFI for this laptop. It's based on my work and help from other people.
 ![HP EliteBook 840 G4](img/laptop.jpg)
 
 ## Laptop Specification:
-- BIOS: For the highest stability use 1.29 (latest version works too, but need to remake SSDT-BATT for better battery management)
+- BIOS: Tested 1.29 and above and all seem to work
 - CPU: Intel® Core i7-7600U (for other CPUs, you need to make CPUFriendDataProvider.kext [yourself](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend))
 - GPU: Intel® HD Graphics 620
 - RAM: 8GB DDR4 2133MHz
@@ -60,7 +60,7 @@ This repository was built to make a fully working OpenCore EFI for this laptop. 
 - Enable Integrated Camera
 - Enable Media Card Reader
 - Enable Smart Card (if you want to use the smart card reader)
-- Disable Smart Card Power Savings (weird behaviour on macOS)
+- Disable Smart Card Power Savings (weird behavior on macOS)
 - Enable Runtime Power Management
 - Disable Extended Idle Power States
 - Disable Deep Sleep
@@ -91,7 +91,7 @@ Here I explain what each SSDT in the EFI does.
 | SSDT-HPET | Fixes IRQ conflicts | ? |
 | SSDT-SBUS-MCHC | Improves SMBus support and injects MCHC properties | Broken when VoodooSMBus injected, but does fix MCHC - recommended to keep it enabled |
 | SSDT-PMCR | Some LPCB device fix | ? |
-| SSDT-PPMC | Some real macOS device fix | ? |
+| SSDT-PPMC | NVRAM fix | Most likely no |
 | SSDT-SET-STAS | Fixes support for latest BIOS versions | Disable if on BIOS version lower than 1.32 |
 
 ### ACPI renames and patches
@@ -161,7 +161,7 @@ Actually, it's pretty easy if you do it **before** the installation.
 Just follow the [original guide](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) but generate the serial and inject it **before** you start installing macOS. This will save you a lot of time and will make iServices work right after the installation.
 
 ### Secure Boot and ApECID
-If you're using [Itlwm](https://github.com/OpenIntelWireless/itlwm), you need to set SecureBootModel to Default. If you don't use that kext, you can have it set to the closest one that matches your SMBIOS for higher security. I used `j680` from **MacBookPro15,1** SMBIOS. 
+If you're using [Itlwm](https://github.com/OpenIntelWireless/itlwm), you need to set SecureBootModel to Default. If you don't use that kext, you can have it set to the closest one that matches your SMBIOS for higher security. I used `j680` from **MacBookPro15,1** SMBIOS.
 
 You can also [generate your own ApECID](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#apecid) (stands for Apple Enclave Identifier) which is known as the "highest level of security". Used along with a custom SecureBootModel will make your device even more secure.
 
@@ -190,7 +190,7 @@ Make sure to disable wake on LAN in power settings. I also recommend to disable 
 ### HiDPI Scaling (Retina Scaling)
 ![Screenshot](img/hidpi.png)
 
-Retina displays on real Apple devices have a high pixel density because of HiDPI scalling. One logical pixel is four physical pixels on Retina displays. This can be emulated on Hackintoshes too. I used a script called [one-key-hidpi](https://github.com/xzhih/one-key-hidpi) which works pretty good on this device. Since Full HD is quite hard to work on while using a 14" display, this is a really useful fix. However, using it will make the Apple boot logo large at 2nd boot stage, and I haven't found a way to fix that yet.
+Retina displays on real Apple devices have a high pixel density because of HiDPI scaling. One logical pixel is four physical pixels on Retina displays. This can be emulated on Hackintoshes too. I used a script called [one-key-hidpi](https://github.com/xzhih/one-key-hidpi) which works pretty good on this device. Since Full HD is quite hard to work on while using a 14" display, this is a really useful fix. However, using it will make the Apple boot logo large at 2nd boot stage, and I haven't found a way to fix that yet.
 
 These are the options I used in the script:
 | Feature | Setting |
@@ -206,7 +206,7 @@ I found a way to fix the Wi-Fi button, that was previously not doing anything. T
 
 I'll provide the instructions needed for the fix.
 
-First, you'll need to determine what is your Wi-Fi device's name. To do so, type in ```networksetup -listnetworkserviceorder | sed -n '/Wi-Fi/s|.*Device: \(.*\)).*|\1|p'``` in the terminal. Generally it's named ```en3```. Rememeber the name, as you will need it in further steps.
+First, you'll need to determine what is your Wi-Fi device's name. To do so, type in ```networksetup -listnetworkserviceorder | sed -n '/Wi-Fi/s|.*Device: \(.*\)).*|\1|p'``` in the terminal. Generally it's named ```en3```. Remember the interface's name, as you will need it in further steps.
 
 1. Open Automator app and create a new Service
 2. Set "Service receives selected: to "no input" in "any application"
@@ -216,7 +216,7 @@ First, you'll need to determine what is your Wi-Fi device's name. To do so, type
 6. Go to System Preferences -> Keyboard -> Shortcuts
 7. Go to the Services section, and scroll down to General - you should find your service there. Once you select it - click "add shortcut" and press the Wi-Fi button.
 
-Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the LED will require additional fixes - making a custom SSDT would propably make it work.
+Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the LED will require additional fixes - making a custom SSDT would probably make it work.
 
 **Note:** If you have multiple user accounts on your laptop - you will have to repeat all of these steps for each account.
 
