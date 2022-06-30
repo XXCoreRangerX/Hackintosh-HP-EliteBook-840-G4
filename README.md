@@ -8,7 +8,7 @@ OpenCore EFI for the HP EliteBook 840 G4
 
 # Overview:
 
-> :warning: **Important**: Sleep settings have been improved. Please change them according to the new configuration. Make sure to also **Disable USB Legacy Port Charging** in the BIOS, because it causes weird behavior of the left USB port.
+> :warning: The repository has finally been updated to the latest version of OpenCore. I've been testing this configuration on the latest version of macOS Monterey and everything works as expected. Trackpoint and upper touchpad buttons are fixed now as well! Oh and battery patching is no longer buggy, thanks to ECEnabler kext.
 
 This repository was built to make a fully working OpenCore EFI for this laptop. It's based on my work and help from other people.
 ![HP EliteBook 840 G4](img/laptop.jpg)
@@ -80,7 +80,7 @@ Here I explain what each SSDT in the EFI does.
 | SSDT | What is it used for | Is it required |
 | ------------- | ------------- | ------------- |
 | SSDT-PLUG | Fixes CPU power management | Yes |
-| SSDT-BATT | Fixes battery indicator and power management | Yes |
+| SSDT-BATT | Fixes battery indicator and power management | No (battery patches are no longer needed) |
 | SSDT-USBX | Fixes Embedded Controller | Yes |
 | SSDT-GPRW | Fixes wake on USB or power state change | Yes |
 | SSDT-ZPTS | Fixes auto reboot when shutting down | Yes |
@@ -91,7 +91,7 @@ Here I explain what each SSDT in the EFI does.
 | SSDT-HPET | Fixes IRQ conflicts | ? |
 | SSDT-SBUS-MCHC | Improves SMBus support and injects MCHC properties | Broken when VoodooSMBus injected, but does fix MCHC - recommended to keep it enabled |
 | SSDT-PMCR | Some LPCB device fix | ? |
-| SSDT-PPMC | NVRAM fix | Most likely no |
+| SSDT-PPMC | NVRAM fix | No |
 | SSDT-SET-STAS | Fixes support for latest BIOS versions | Disable if on BIOS version lower than 1.32 |
 
 ### ACPI renames and patches
@@ -224,7 +224,6 @@ Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the
 - DRM (isn't supported on iGPU only systems)
 - Proper CFG Unlock (there isn't an option in the BIOS, and I didn't find any way to disable it)
 - FingerPrint Scanner (currently there's no way to emulate an OEM fingerprint scanner under macOS)
-- Trackpoint (works with VoodooPS2Mouse, but using that kext breaks the touchpad - still working on it)
 - Boot chime
 - External display on VGA
 - Dot to disable touchpad (in the upper left corner of the touchpad, might be possible with VoodooPS2)
@@ -246,7 +245,7 @@ Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the
 - [xzhih](https://github.com/xzhih) for one-key-hidpi
 - [alexandred](https://github.com/alexandred) for VoodooI2C
 - [ben9923](https://github.com/ben9923) for helping me fix all touchscreen related issues
-- [1Revenger1](https://github.com/1Revenger1) for VoodooRMI
+- [1Revenger1](https://github.com/1Revenger1) for VoodooRMI and working on MUX support
 - [cholonam](https://github.com/cholonam) and [sinetek](https://github.com/sinetek) for Sinetek-rtsx
 - [RehabMan](https://github.com/RehabMan) for many laptop hotpatches
 - [kreizlie](https://github.com/kreizlie) for modified hotpatches and BIOS settings
