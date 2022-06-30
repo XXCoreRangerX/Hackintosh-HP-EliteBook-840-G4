@@ -100,15 +100,6 @@ Here I explain what does each ACPI patch do.
 | Patch | What is it used for | Is it required |
 | ------------- | ------------- | ------------- |
 | RTC Fix to stop Post Error | Fixes RTC wake | Yes |
-| Rename EC method BTIF to XTIF | Fixes Embedded Controller issue | Yes |
-| Rename EC method BTST to XTST | Fixes Embedded Controller issue | Yes |
-| Rename EC method ITLB to XTLB | Fixes Embedded Controller issue | Yes |
-| Rename EC method GBTI to XBTI | Fixes Embedded Controller issue | Yes |
-| Rename EC method GBTC to GBTX | Fixes Embedded Controller issue | Yes |
-| Rename EC method SBTC to SBTX | Fixes Embedded Controller issue | Yes |
-| Rename EC method GACW to XACW | Fixes Embedded Controller issue | Yes |
-| Rename EC method GBAW to XBAW | Fixes Embedded Controller issue | Yes |
-| Rename SB package NBTI to NBTX | Fixes Embedded Controller issue | Yes |
 | Rename method GPRW to XPRW | Fixes wake on USB or power state change | Yes |
 | \_CRS to XCRS | Fixes touchscreen and touchpad | Yes |
 | Rename PWRB method \_STA to XSTA | Fixes power button | Yes |
@@ -126,6 +117,7 @@ Here I explain what each injected kext is used for.
 | CPUFriend | Fixes CPU power management | Yes |
 | CPUFriendDataProvider | Provides information about the CPU for CPUFriend | You need to [make a custom CPUFriendDataProvider](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend)) if you have a different CPU |
 | CtlnaAHCIPort | Fixes some AHCI controllers that were dropped in Big Sur | Yes |
+| ECEnabler | Does the battery patching | Yes |
 | IntelMausi | Fixes ethernet | Yes |
 | Lilu | A kext to patch many processes, required for AppleALC, WhateverGreen, VirtualSMC and many other kexts. Without Lilu, they will not work | Yes |
 | NVMeFix | Fixes power management and initialization on non-Apple NVMe | Yes |
