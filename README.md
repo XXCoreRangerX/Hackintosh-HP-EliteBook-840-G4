@@ -8,13 +8,13 @@ OpenCore EFI for the HP EliteBook 840 G4
 
 # Overview:
 
-> :warning: The repository has finally been updated to the latest version of OpenCore. I've been testing this configuration on the latest version of macOS Monterey and everything works as expected. Trackpoint and upper touchpad buttons are fixed now as well! Oh and battery patching is no longer buggy, thanks to ECEnabler kext.
+> :warning: The repository has finally been updated to the latest version of OpenCore. I've been testing this configuration on the latest version of macOS Monterey and everything works as expected. Trackpoint and upper touchpad buttons are fixed now as well! Oh and battery patching is no longer buggy, thanks to ECEnabler kext. I've also tested the dock station, which seems to work fine with some USB patching. Additionally, new RealtekCardReader kext fixes all problems with the card reader.
 
 This repository was built to make a fully working OpenCore EFI for this laptop. It's based on my work and help from other people.
 ![HP EliteBook 840 G4](img/laptop.jpg)
 
 ## Laptop Specification:
-- BIOS: Tested 1.29 and above and all seem to work
+- BIOS: Tested 1.29 and above and all seem to work (1.32 and above require SSDT-SET-STAS enabled)
 - CPU: Intel® Core i7-7600U (for other CPUs, you need to make CPUFriendDataProvider.kext [yourself](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#using-cpu-friend))
 - GPU: Intel® HD Graphics 620
 - RAM: 8GB DDR4 2133MHz
@@ -80,13 +80,12 @@ Here I explain what each SSDT in the EFI does.
 | SSDT | What is it used for | Is it required |
 | ------------- | ------------- | ------------- |
 | SSDT-PLUG | Fixes CPU power management | Yes |
-| SSDT-BATT | Fixes battery indicator and power management | No (battery patches are no longer needed) |
 | SSDT-USBX | Fixes Embedded Controller | Yes |
 | SSDT-GPRW | Fixes wake on USB or power state change | Yes |
 | SSDT-ZPTS | Fixes auto reboot when shutting down | Yes |
 | SSDT-HP-FixLidSleep | Fixes keyboard spam on lid close | Yes |
 | SSDT-PWRB | Fixes power button | Yes |
-| SSDT-PNLF | Enables brightness controll | Yes |
+| SSDT-PNLF | Enables brightness control | Yes |
 | SSDT-XOSI | Fixes touchscreen and touchpad | Yes |
 | SSDT-HPET | Fixes IRQ conflicts | ? |
 | SSDT-SBUS-MCHC | Improves SMBus support and injects MCHC properties | Broken when VoodooSMBus injected, but does fix MCHC - recommended to keep it enabled |
@@ -121,7 +120,8 @@ Here I explain what each injected kext is used for.
 | IntelMausi | Fixes ethernet | Yes |
 | Lilu | A kext to patch many processes, required for AppleALC, WhateverGreen, VirtualSMC and many other kexts. Without Lilu, they will not work | Yes |
 | NVMeFix | Fixes power management and initialization on non-Apple NVMe | Yes |
-| Sinetek-rtsx | Fixes SD card reader | Yes |
+| RealtekCardReader | Fixes SD card reader | Yes |
+| RealtekCardReaderFriend | Makes macOS recognize the card reader as a native one | Yes |
 | VirtualSMC | Emulates the SMC chip found on real macs, without this macOS will not boot | Yes |
 | SMCBatteryManager | Used for measuring battery readouts on laptops | Yes |
 | SMCProcessor | Used for monitoring CPU temperature | Yes |
@@ -225,7 +225,6 @@ Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the
 
 ## Not tested:
 - NFC module
-- Dock station
 
 # Acknowledgements
 
@@ -241,4 +240,5 @@ Done! Now you can use the Wi-Fi button to enable and disable Wi-Fi. However, the
 - [cholonam](https://github.com/cholonam) and [sinetek](https://github.com/sinetek) for Sinetek-rtsx
 - [RehabMan](https://github.com/RehabMan) for many laptop hotpatches
 - [kreizlie](https://github.com/kreizlie) for modified hotpatches and BIOS settings
+- [FireWolf](https://github.com/0xFireWolf) for RealtekCardReader
 - everyone who helped me on Reddit, Discord and GitHub
